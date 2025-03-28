@@ -34,16 +34,22 @@ def booking_agent(context):
     if context["mock"]:
         return mock_gpt_response("booking")
 
+    info = context.get("location_info", {})
+    phone = info.get("phone", "Not available") if info else "Not available"
+    website = info.get("website", "Not listed") if info else "Not listed"
+    name = info.get("name", context["restaurant"]) if info else context["restaurant"]
+
     return f"""
-    Book a table at **{context['restaurant']}** via:
+    Book **{name}** via:
     - [OpenTable](https://www.opentable.com)
     - [TheFork](https://www.thefork.com)
-    
-    Try searching the restaurant name directly or calling them using a local listing.
+    - Website: {website}
+    - Phone: {phone}
     """
 
 def map_agent(context):
-    location = search_location(context["restaurant"])
+    location, info = search_location(context["restaurant"])
+    context["location_info"] = info  # pass to other agents
     images = fetch_images(context["restaurant"]) if not context["mock"] else [
         "https://source.unsplash.com/400x300/?vegetarian-restaurant",
         "https://source.unsplash.com/400x300/?plant-based-food",
