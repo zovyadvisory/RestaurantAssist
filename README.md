@@ -1,26 +1,12 @@
-# Zovy's Multi-agent Vegetarian Assistant 🤖 (Full Upgrade)
+# Zovy's Multi-agent Vegetarian Assistant 🤖 (Streamlit Debug Edition)
 
-A fully agentic AI web app with real-time Google review scraping, animated agent progress, and LangGraph-style vector memory.
+✅ Includes:
+- Logging for error tracing
+- UI load confirmation
+- API input (OpenAI + Serper keys)
 
-## Features
-- 🔍 Real Google reviews via Serper API
-- ⚡ Animated agent progress tracker
-- 🧠 LangGraph-style chaining with vector memory (FAISS)
-- 🎨 Stylish Streamlit UI with mock/demo mode
-- 📍 Booking links, map views, and Unsplash image previews
-
-## To Run
-
-1. Install dependencies:
-
+## Run locally:
 ```bash
 pip install -r requirements.txt
-```
-
-2. Run the app:
-
-```bash
 streamlit run app.py
 ```
-
-3. Enter your OpenAI and Serper.dev API keys in the sidebar.
