@@ -53,3 +53,13 @@ def social_media_agent(context):
     Include emojis, hashtags, and a friendly tone.
     """
     return mock_gpt_response("real_call", prompt).split("\n")  
+
+def menu_agent(context):
+    if context["mock"]:
+        return mock_gpt_response("menu")
+
+    prompt = f"""
+    Create a 3-course vegetarian sampler menu for the restaurant "{context['restaurant']}".
+    Include a starter, main course, and dessert, each with a short description.
+    """
+    return mock_gpt_response("real_call", prompt)
