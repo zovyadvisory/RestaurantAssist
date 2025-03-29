@@ -81,3 +81,13 @@ def booking_agent(context):
     - Website: {website}
     - Phone: {phone}
     """
+
+def map_agent(context):
+    location, info = search_location(context["restaurant"])
+    context["location_info"] = info  # share with booking agent
+    images = fetch_images(context["restaurant"]) if not context["mock"] else [
+        "https://source.unsplash.com/400x300/?vegetarian-restaurant",
+        "https://source.unsplash.com/400x300/?plant-based-food",
+        "https://source.unsplash.com/400x300/?vegan-meal"
+    ]
+    return location, images
