@@ -1,4 +1,7 @@
 import requests
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from utils import mock_gpt_response, search_location, fetch_images
 
 def review_agent(context):
