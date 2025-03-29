@@ -43,3 +43,13 @@ def review_agent(context):
     """
 
     return mock_gpt_response("real_call", prompt)
+
+def social_media_agent(context):
+    if context["mock"]:
+        return mock_gpt_response("social_posts").split("\n")
+
+    prompt = f"""
+    Write 3 fun and engaging social media posts for the vegetarian restaurant "{context['restaurant']}".
+    Include emojis, hashtags, and a friendly tone.
+    """
+    return mock_gpt_response("real_call", prompt).split("\n")  
